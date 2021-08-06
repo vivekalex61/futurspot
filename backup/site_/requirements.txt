@@ -1,0 +1,13 @@
+django
+gunicorn
+django-heroku
+dj-database-url
+dj-static
+
+Unipath
+python-decouple
+Pillow
+Markdown
+bleach
+psycopg2
+whitenoise

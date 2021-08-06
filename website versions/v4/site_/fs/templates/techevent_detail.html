@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+
+#main-slide .citem img {
+  position: relative;
+  width: 100%;
+}
+
+#main-slide .cinner .citem::after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#main-slide .citem .carousel-caption {
+  opacity: 0;
+  transition: opacity 100ms ease 0s;
+  z-index: 0;
+}
+
+#main-slide .citem .carousel-caption .heading {
+  font-size: 88px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+}
+
+#main-slide .citem .carousel-caption p {
+  font-size: 20px;
+}
+
+#main-slide .citem.active .carousel-caption {
+  opacity: 1;
+  transition: opacity 100ms ease 0s;
+  z-index: 1;
+}
+
+#main-slide .carousel-caption {
+  color: #fff;
+  position: absolute;
+  top: 35%;
+}
+
+#main-slide .carousel-caption .btn {
+  margin: 25px 25px 0px 0px;}
+  
+#uls {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 16px;
+  text-transform: uppercase;
+  
+}
+#sm{text-align:center;
+padding-top=0;}
+#headline{
+
+text-align:center;
+}
+#uls span {
+  display: block ;
+  font-size: 4.5rem;
+}
+
+
+ 
+#content {
+  display: none;
+  padding:16px;
+}
+
+.emoji {
+  padding: 0 .25rem;
+}
+
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  li {
+    font-size: 1.125rem;
+    padding: 50px;
+  }
+  
+  li span {
+    font-size: 3.375rem;
+  }
+}
+
+
+</style>
+<div id="main-slide" class="carousel slide" data-ride="carousel">
+        
+        <div class="cinner">
+          <div class="citem active">
+            <img class="d-block  w-100" style="max-width: 100%;
+            min-width: 300px;
+            height: 600px;"src="{{object.e_thumb.url}}" alt="First slide">
+            <div class="carousel-caption d-md-block">
+              
+              <h1 class="wow heading" style=" max-width: 800px;
+              min-width: 300px;
+              height: auto; font-size: 5vw ;
+font-weight: 700; font-family: 'Josefin Sans', sans-serif;
+letter-spacing: .125rem;
+text-transform: uppercase;">{% block title %} {{ object.title }} {% endblock title %}</h1>
+              
+            </div>
+          </div>
+         
+     
+     </div>
+      </div>
+      <!-- count donw -->
+      
+      <div class="container">
+  
+  <div id="countdown" style ="padding:0px; display:inline;">
+   
+   
+    <ul id="sm">
+      <li> <h1 id="demo" ></h1></li>
+      
+    </ul></style>
+  </div>  
+   <h2 style="color:black; text-align:center">Location : {{ object.location }}</h2>
+  
+   <p style="color:black; text-align:center" >{{object.e_description}}</p> 
+  
+  
+</div>
+
+
+
+
+<script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("{{ object.date.month}} {{object.date.day }}, {{ object.date.year }} {{ object.date.hour }}:{{ object.date.minute}}:{{ object.date.second }}").getTime();
+  
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+      
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+      
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+      
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+  </script>
+      
+{% endblock content %}
+

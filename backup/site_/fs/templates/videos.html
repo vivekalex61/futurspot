@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+
+
+{% block content %}
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog-Z Videos</title>
+   
+
+
+
+    <div class="container-fluid tm-container-content tm-mt-60">
+        <div class="row mb-4">
+           
+            
+        </div>
+        <h2 style="padding-top :50px; font-family: heroic ; text-align : center ;font-size: 44px ;">Gallery</style></h2>
+        <div class="row tm-mb-90 tm-gallery">
+        {% for post in gallery_list %}    
+       
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                <figure class="effect-ming tm-video-item">
+                    <img src="{{post.g_thumb.url}}" alt="Image" class="img-fluid">
+                    <figcaption class="d-flex align-items-center justify-content-center">
+                        <h5>{{ post.title }}</h5>
+                        <a href='{% url 'gallery_detail' post.slug  %}'>View more</a>
+                    </figcaption>                    
+                </figure>
+                <div class="d-flex justify-content-between tm-text-gray">
+                    <span>{{ post.created_on }}</span>
+                   
+                </div>
+            </div>
+         
+       {% endfor %}  
+           
+        </div> <!-- row -->
+      
+    </div> <!-- container-fluid, tm-container-content -->
+
+    
+{%endblock%}

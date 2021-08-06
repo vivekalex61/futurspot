@@ -1,0 +1,416 @@
+
+{% extends "base.html" %} 
+
+{% load hitcount_tags %}
+{% block content %}
+<head>
+  <title>FuturSpot</title>
+  <meta name="description" content="Noice free, curated news on innovations around the globe!.">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="futurspot,technews,innovation,Artificial intelligence,robotics,science,vr,computing,latestinnovation,technologynews">
+  <meta name="og:image:secure_url" content="https://www.futurspot.com/static/img/logo.png">
+		<meta name="og:image" content="https://www.futurspot.com//static/img/logo.png">
+		<meta name="og:title" content="FuturSpot ">
+		<meta name="og:description" content="Noice free, curated news on innovations around the globe!.">
+  <meta name="google-site-verification" content="T6hjvvGUYLg_ebyLP7ZZwzB-U9WPmD51I84tQemx4Q4"/>
+  <!-- microsoft -->
+  <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "5onogzvnw5");
+  </script>
+  <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "5onogzvnw5");
+  </script>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-190791322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-190791322-1');
+  </script>
+  
+  <script data-ad-client="ca-pub-7206542058393954" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container" >
+    
+
+     <!-- <div class="intro-img">
+        <img src="/static/img/intro_img_e.jpg" alt="" class="img-fluid">
+      </div>-->
+
+      <div class="intro-info">
+        <h2><span>Noice free, curated</span><br>innovation stories around the globe!</h2>
+   
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+<!--==========================
+    Latest News
+  ============================-->
+
+ 
+
+
+
+<section class="recentNews">
+	<div class="container">
+    
+  <h2 style="text-align:left;
+    padding-top:27px;
+    padding-bottom:5px ;
+    font-style: normal;
+    font-family: Inter,sans-serif ; 
+   color: #2c2c2c;      
+    font-size: 1.5em ;
+    letter-spacing: -.3px;
+    font-weight: 700 ;border-bottom: 3px solid#2c2c2c; text-transform: uppercase;" >Recent Stories</h2>
+ <div class="row"> 
+  
+      {% for post in total_post%}
+      {% if post.alt_text == "Articles" %}
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+      
+                                     
+        <div class="inner">
+       
+                     
+         <div class="fauxcrop">
+             <a href="{% url 'post_detail' post.slug  %}"><img alt="{{ post.title}}" src="{{post.dimage.url}}"></a>
+         </div>
+         <div style="display: flex; padding-top: 5px ;">
+         
+         <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+         <!--<div class="rectangle-d" ><p>{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p></div>
+         -->       </div>
+       <div><h3 class="ct-blog-header" ><p style="word-break: break-word; text-align: justify;">{{post.title}}</p></h3></div>
+         
+       </div>
+       <div style="display: flex ; position: relative; bottom: 40px;">
+        <h3 style="font-weight: 600; font-size: 12px;padding-left: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+        <h3 style="padding-left: 30px;font-weight: 500; font-size: 12px; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+         </div> 
+      </div>
+      {% endif %}
+      {% if post.alt_text == "Reviews" %}
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+      
+                                     
+        <div class="inner">
+       
+                     
+         <div class="fauxcrop">
+             <a href="{% url 'post_detail' post.slug  %}"><img alt="{{ post.title}}" src="{{post.dimage.url}}"></a>
+         </div>
+         <div style="display: flex; padding-top: 5px ;">
+         
+         <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+         <!--<div class="rectangle-d" ><p>{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p></div>
+         -->
+       </div>
+       <div><h3 class="ct-blog-header" ><p style="word-break: break-word; text-align: justify;">{{post.title}}</p></h3></div>
+         
+       </div>
+       <div style="display: flex ; position: relative; bottom: 40px;">
+        <h3 style="font-weight: 600; font-size: 12px;padding-left: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+        <h3 style="padding-left: 30px;font-weight: 500; font-size: 12px; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+         </div> 
+      </div>
+      {% endif %}
+
+
+      {% if post.alt_text == "Innovations" %}
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+      
+                                     
+        <div class="inner">
+       
+                     
+         <div class="fauxcrop">
+             <a href="{% url 'post_detail' post.slug  %}"><img alt="{{ post.title}}" src="{{post.dimage.url}}"></a>
+         </div>
+         <div style="display: flex; padding-top: 5px ;">
+         
+         <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+         <!--<div class="rectangle-d" ><p>{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p></div>
+         -->
+       </div>
+       <div><h2 class="ct-blog-header" ><p style="word-break: break-word; text-align: justify;">{{post.title}}</p></h2></div>
+         
+       </div>
+       <div style="display: flex ; position: relative; bottom: 40px;">
+        <h3 style="font-weight: 600; font-size: 10px;padding-left: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+        <h3 style="padding-left: 30px;font-weight: 500; font-size: 10px; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+         </div> 
+      </div>
+      {% endif %}
+      {% if post.alt_text == "Gallery" %}
+
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'gallery_detail' post.slug  %}'">
+
+                               
+        <div class="inner">
+       
+                           
+           <div class="fauxcrop">
+           <a href='{% url 'gallery_detail' post.slug  %}'><img alt="{{ post.title}}" src="{{post.g_thumb.url}}"></a>
+           </div>
+           <div style="display: flex; padding-top: 5px ;">
+           <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+          <!-- <div class="rectangle-d" ><p>{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p>
+           </div>-->   
+       </div>
+       <div><h3 class="ct-blog-header" ><p style="word-break: break-word; text-align: justify;">{{post.title}}</p></h3></div>
+      
+      </div>
+      <div style="display: flex ; position: relative; bottom: 40px;">
+       <h3 style="font-weight: 600; font-size: 12px;padding-left: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+       <h3 style="padding-left: 30px;font-weight: 500; font-size: 12px; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+        </div> 
+     </div>
+      {% endif %}
+      {% if post.alt_text == "Events" %}
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'event_detail' post.slug  %}'">
+      
+                                     
+        <div class="inner">
+       
+                     
+         <div class="fauxcrop">
+             <a href="{% url 'event_detail' post.slug %}"><img alt="{{ post.title}}" src="{{post.e_thumb.url}}"></a>
+         </div>
+         <div style="display: flex; padding-top: 5px ;">
+         
+         <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+       <!--  <div class="rectangle-d" ><p>{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p></div>
+          -->
+       </div>
+             <div><h3 class="ct-blog-header" ><p style="word-break: break-word; text-align: justify;">{{post.title}}</p></h3></div>
+         
+            </div>
+            <div style="display: flex ; position: relative; bottom: 40px;">
+             <h3 style="font-weight: 600; font-size: 12px;padding-left: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+             <h3 style="padding-left: 30px;font-weight: 500; font-size: 12px; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+              </div> 
+         
+        
+      </div>
+      {% endif %}
+
+
+{% endfor %}   
+
+<!--    </div>        -->
+   
+</div>
+
+
+<div id="load" ><a href="#">Load More</a></div>
+
+  <div style="display: grid;">
+    <h2 class='h2_sections'>trending now</h2>
+  
+        {% for post in popular_posts_1%}
+        
+        <div style=" padding-left: 0px;">
+        <a href="{% url 'post_detail' post.slug  %}"><div style="position: relative; "> <p><img id ="im_tre" src="{{post.dimage.url}}"  alt="{{ post.title}}" /></p>
+        <div id="div1_tre" ><div style="position:absolute;left: 10px;padding-right: 1%; padding-left: 1%; top: 5%; text-align: center;background-color:orangered ; color:white ;font-weight: 400;font-size: 12px;" >FEATURED</div>
+        <div id ="ti_tre"> {{ post.title }}</div>
+      </div>
+        
+      </div></a>
+      
+    
+        {% endfor %}
+      </div>
+    
+  
+    <h2 id = "h_inn" >innovation news</h2>
+      <div id="di3_inn"  >
+       
+    
+        {% for post in Post%}
+        {% if post.alt_text == "Innovations" %}
+    
+        <div id="di_inn" >
+       <img id="img_inn"  src="{{post.dimage.url}}"  alt="{{ post.title}}" > 
+        <p id="p_inn" ><a href="{% url 'post_detail' post.slug  %}" class="title_sections">{{post.title}}</a></p>
+        <p id ="p2_inn"><a href="{% url 'post_detail' post.slug  %}"  style=" font-family:sans-serif,inter;  font-size: 1vw; font-weight: 900; color: rgb(235, 92, 92);">Read More</a></p>
+        
+      </div>
+      {%endif%}
+        {% endfor %}
+    
+          </div>
+    
+     
+    
+<!--style="display:flex; flex-wrap: wrap; margin-bottom: 10px;float:left;margin:auto; width: 300px;padding: 80px 0px 90px 0px;left: 0px; position: relative;" -->
+      <div id="div_pop">
+      <h2 class='h2_sections'  >Popular stories</h2>
+      <div class="div2_sections">
+        
+       
+        {% for post in popular_posts%}
+        
+        <ul style="margin: 0px;
+        padding: 0px; padding-right: 10px;">
+          <div class="div_sections">
+  
+            <img class="img_sections"  src="{{post.dimage.url}}"  alt="{{ post.title}}" />
+            <p style="text-align:justify ;"><a href="{% url 'post_detail' post.slug  %}" class="title_sections">{{post.title}}</a></p>
+           
+            
+          </div>
+          <div id="auth_name">
+            <h3 style="font-weight: 600; font-size: .85vw;padding-top: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+            <h3 style="padding-top: 5px; padding-left: 25px;font-weight: 500; font-size: .85vw; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+             </div> 
+        </ul>
+     
+      
+         {% endfor %}
+         
+     </div> 
+     <h2 class='h2_sections' >Reviews</h2>
+        <div  class="div2_sections">
+         
+            {% for post in Reviews_popular%}
+            
+            <ul style="margin: 0px;
+            padding: 0px;padding-right: 10px;  ">
+              <div class="div_sections">
+      
+                <img class="img_sections" src="{{post.dimage.url}}" alt="{{ post.title}}" />
+                <p style="text-align:justify ;"><a href="{% url 'post_detail' post.slug  %}" class="title_sections">{{post.title}}</a></p>
+               
+                
+              </div>
+              <div id="auth_name">
+                <h3 style="font-weight: 600; font-size: .85vw;padding-top: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+                <h3 style="padding-top: 5px; padding-left: 25px;font-weight: 500; font-size: .85vw; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+                 </div> 
+            </ul>
+         
+          
+             {% endfor %}
+             
+            </div>
+            <h2 class='h2_sections' >Articles</h2>
+            <div  class="div2_sections">
+             
+                {% for post in Articles_popular%}
+                
+                <ul style="margin: 0px;
+                padding: 0px;padding-right: 10px;">
+                  <div class="div_sections" >
+          
+                    <img class="img_sections" src="{{post.dimage.url}}"  alt="{{ post.title}}" />
+                    <p style="text-align:justify ;" ><a href="{% url 'post_detail' post.slug  %}"class="title_sections">{{post.title}}</a></p>
+                   
+                    
+                  </div>
+                  <div id="auth_name">
+                    <h3 style="font-weight: 600; font-size: .85vw;padding-top: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+                    <h3 style="padding-left: 25px;padding-top: 5px; font-weight: 500; font-size: .85vw; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+                     </div> 
+                </ul>
+             
+              
+                 {% endfor %}
+                 
+                </div>
+  
+  
+  </div>
+  
+   
+ 
+    <script>
+      //Infinite Scroll
+$(window).on("scroll", function() {
+ //page height
+ var scrollHeight = $(document).height();
+ //scroll position
+ var scrollPos = $(window).height() + $(window).scrollTop();
+ // fire if the scroll position is 300 pixels above the bottom of the page
+ if(((scrollHeight - 300) >= scrollPos) / scrollHeight == 0){
+   $('.load-more-days-button').click();
+  }
+});
+    </script>
+
+ <div id="div_gall" >
+  <h2 class='h2_sections' >Gallery</h2>
+  <div class="div2_sections">
+   
+   {% for post in Gallery_sidebar%}
+   <ul style="margin: 0px;
+   padding: 0px;padding-right: 10px;">
+     <div class="div_sections">
+
+       <img class="img_sections" src="{{post.g_thumb.url}}" alt="{{ post.title}}" />
+       <p style="text-align:justify ;"><a href='{% url 'gallery_detail' post.slug  %}' class="title_sections">{{post.title}}</a></p>
+       
+     
+     </div>
+     <div id="auth_name">
+      <h3 style="font-weight: 600; font-size: .85vw;padding-top: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+      <h3 style="padding-left: 25px;padding-top: 5px; font-weight: 500; font-size: .85vw; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+       </div> 
+    </ul>
+    {% endfor %}
+
+  
+ </div>
+
+ <h2 class='h2_sections'  >tech events</h2>
+ 
+ <div class="div2_sections">
+     
+    
+       
+     {% for post in  Event_sidebar%}
+     
+     <ul style="margin: 0px;padding: 0px;padding-right: 10px;">
+       <div class="div_sections">
+       <img class="img_sections"  src="{{post.e_thumb.url}}"  alt="{{ post.title}}" />
+        <p style="text-align:justify ;"><a href="{% url 'event_detail' post.slug  %}" class="title_sections">{{post.title}}</a></p>
+         
+         
+       </div>
+       <div id="auth_name">
+        <h3 style="font-weight: 600; font-size: .85vw;padding-top: 5px; color: rgb(71, 71, 71);" >BY {{ post.event_author}} </h3>
+        <h3 style="padding-top: 5px; padding-left: 25px;font-weight: 500; font-size: .85vw; color: rgb(56, 56, 56);">{{ post.pub}}</h3>
+         </div> 
+      </ul>
+    
+      {% endfor %}
+     
+    
+   </div>
+   
+ </div>
+
+  </div>
+</div>
+
+ 
+  </section>
+
+
+{%endblock%}

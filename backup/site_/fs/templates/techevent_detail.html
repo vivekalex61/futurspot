@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+
+#main-slide .citem img {
+  position: relative;
+  width: 100%;
+}
+
+#main-slide .cinner .citem::after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#main-slide .citem .carousel-caption {
+  opacity: 0;
+  transition: opacity 100ms ease 0s;
+  z-index: 0;
+}
+
+#main-slide .citem .carousel-caption .heading {
+  font-size: 88px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+}
+
+#main-slide .citem .carousel-caption p {
+  font-size: 20px;
+}
+
+#main-slide .citem.active .carousel-caption {
+  opacity: 1;
+  transition: opacity 100ms ease 0s;
+  z-index: 1;
+}
+
+#main-slide .carousel-caption {
+  color: #fff;
+  position: absolute;
+  top: 35%;
+}
+
+#main-slide .carousel-caption .btn {
+  margin: 25px 25px 0px 0px;}
+  
+#uls {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 16px;
+  text-transform: uppercase;
+  
+}
+#sm{text-align:center;
+padding-top=0;}
+#headline{
+
+text-align:center;
+}
+#uls span {
+  display: block ;
+  font-size: 4.5rem;
+}
+
+
+ 
+#content {
+  display: none;
+  padding:16px;
+}
+
+.emoji {
+  padding: 0 .25rem;
+}
+
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  li {
+    font-size: 1.125rem;
+    padding: 50px;
+  }
+  
+  li span {
+    font-size: 3.375rem;
+  }
+}
+
+
+</style>
+<div id="main-slide" class="carousel slide" data-ride="carousel">
+        
+        <div class="cinner">
+          <div class="citem active">
+            <img class="d-block  w-100" style="width:400px; height : 600px;" src="{{object.e_thumb.url}}" alt="First slide">
+            <div class="carousel-caption d-md-block">
+              
+              <h1 class="wow heading" style="font-size: 80px;
+  font-weight: 700; font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: .125rem;
+  text-transform: uppercase;">{% block title %} {{ object.title }} {% endblock title %}</h1>
+              
+            </div>
+          </div>
+         
+     
+     </div>
+      </div>
+      <!-- count donw -->
+      
+      <div class="container">
+  
+  <div id="countdown" style ="padding:0px; display:inline;">
+   
+   
+    <ul id="sm">
+      <li id ="uls"><span id="days"></span>days</li>
+      <li id ="uls"><span id="hours"></span>Hours</li>
+      <li id ="uls"><span id="minutes"></span>Minutes</li>
+      <li id ="uls"><span id="seconds"></span>Seconds</li>
+    </ul></style>
+  </div>  
+   <h2 style="color:white; text-align:center">Location : {{ object.location }}</h2>
+  
+   <p style="color:white; text-align:center" >{{object.e_description}}</p> 
+  
+  
+</div>
+
+
+
+
+<script>
+
+
+(function () {
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+  
+  let event_time = "{{ object.date.month}} {{object.date.day }}, {{ object.date.year }} {{ object.date.hour }}:{{ object.date.minute}}:{{ object.date.second }}",
+      countDown = new Date(event_time).getTime(),
+      x = setInterval(function() {    
+
+        let now = new Date().getTime(),
+            distance = countDown - now;
+
+          document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          let headline = document.getElementById("headline"),
+              countdown = document.getElementById("countdown"),
+              content = document.getElementById("content");
+
+          headline.innerText = "Event reached";
+          countdown.style.display = "none";
+          content.style.display = "block";
+
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+
+
+</script>
+      
+{% endblock content %}
+

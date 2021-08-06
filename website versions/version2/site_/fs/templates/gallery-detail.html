@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+{% if object.media_status == "video" %}  
+    <div class="container-fluid tm-container-content tm-mt-60" style ="padding-left:50px;">
+        <div class="row mb-4">
+            <h2 class="col-12 tm-text-primary" style ="padding-top:50px;">{% block title %} {{ object.title}} {% endblock title %}</h2>
+        </div>
+        <div class="row tm-mb-90">            
+            <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
+                <video autoplay muted loop controls id="tm-video">
+                    <source src="{{object.g_video.url}}" type="video/mp4" style=" max-width: 800px;
+                    min-width: 300px;
+                    height: auto;">
+                </video>  
+                
+            </div>
+{% endif %}   
+
+{% if object.media_status == "image" %}  
+    <div class="container-fluid tm-container-content tm-mt-60 " style ="padding-left:50px;">
+        <div class="row mb-4">
+            <h2 class="col-12 tm-text-primary" style ="padding-top:50px ;color:black;">{{ object.title}}</h2>
+        </div>
+        <div  class="row tm-mb-40 gal_i">            
+             <img src="{{object.g_image.url}}" alt="Girl in a jacket" style="max_width : 100%;padding-right:20px;
+             min-width: 300px;
+             height: auto;"> 
+            </div>
+            
+{% endif %}
+            
+                   
+                    <div style ="padding-top:20px;" >
+                        <div style="padding-left:20px; color : red;"><p>{{ object.g_content }}</p></style></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        </div> <!-- row -->
+    </div> <!-- container-fluid, tm-container-content -->
+
+<script src="js/plugins.js"></script>
+    <script>
+        $(window).on("load", function() {
+            $('body').addClass('loaded');
+        });
+    </script>
+    
+    
+{% endblock content %}

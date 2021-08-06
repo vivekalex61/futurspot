@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+ {% block content %}
+
+<section id="at" class="at_c"  >
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 card mb-0  mt-0 left top"  >
+      <div class="card-body">
+       
+         
+        <h1 style="font-family: Montserrat  ; font-size: 50px ; padding-top: 30px ;"><b>{% block title %} {{ object.title }} {% endblock title %}</b></h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        
+        
+        
+  
+<div id="share-buttons">
+    
+    
+    <!-- Email -->
+    <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 {% url 'post_detail' post.slug  %}">
+        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+    </a>
+ 
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://vivekalex.pythonanywhere.com{% url 'post_detail' post.slug  %}" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+    
+ 
+    
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+    </a>
+    
+    <!-- Pinterest -->
+    <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
+    </a>
+    
+    
+    
+    <!-- Reddit -->
+    <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+    </a>
+   
+    <!-- Tumblr-->
+    <a href="http://www.tumblr.com/share/link?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
+    </a>
+     
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+
+    
+    <!-- Yummly -->
+    <a href="http://www.yummly.com/urb/verify?url={% url 'post_detail' post.slug  %}&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
+    </a>
+
+</div>
+
+        
+        
+         <img class ="post_image" src="{{post.dimage.url}}" alt="Flowers in Chania"  width= 100% height="600"  >
+        <div class="card-text "  style="color: #353638 ; font-family: DejaVu Sans ; ">{{ object.content | safe }}
+        </div>
+        </div>
+    </div>
+  
+
+  </div>
+</div>
+</section>
+
+{% endblock content %}

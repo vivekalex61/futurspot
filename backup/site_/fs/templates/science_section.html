@@ -1,0 +1,56 @@
+
+{% extends "base.html" %} 
+
+
+{% block content %}
+<html lang="en">
+
+
+<section class="recentNews">
+	<div class="container">
+		<h2 style="padding-top :100px; font-family: heroic ; text-align : center ;font-size: 44px ;">Science</style></h2>
+    <div class="row">
+{% for post in post_list %}    
+{% if post.innovation_catgry == 4 %}
+<div class="ct-blog col-sm-0 col-md-4" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+
+                               
+				<div class="inner">
+				        
+					<div class="fauxcrop">
+            
+				    
+          <div class="rectangle"><p style ="color: aliceblue  ; text-align: center; font-size: 14px;" > {{ post.alt_text }}</p></div> 
+            
+				<a href="{% url 'post_detail' post.slug  %}"><img alt="asdkjasd asjdh" src="{{post.dimage.url}}"></a>
+					</div>
+					<div class="ct-blog-content">
+						<div class="ct-blog-date">
+						<strong>{{ post.created_on.day }}</strong>
+						<span>{{ post.created_on.month }}</span>
+
+				
+						<strong>{{ post.created_on.year }}</strong>
+							
+						</div>
+						
+						<h3 class="ct-blog-header" >
+							{{ post.title }}</h3>
+           
+					       
+					       
+					       </div>
+					
+				</div>
+
+				
+      </div>
+	  {% endif %}        
+     
+	  {% endfor %}    
+
+</div>    
+</div> 
+</section>
+
+{%endblock%}

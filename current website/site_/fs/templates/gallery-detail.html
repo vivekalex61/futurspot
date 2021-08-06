@@ -1,0 +1,101 @@
+
+{% extends 'base.html' %}
+
+
+
+{% block head %}
+    <meta name="google-site-verification" content="T6hjvvGUYLg_ebyLP7ZZwzB-U9WPmD51I84tQemx4Q4"/>
+    <meta name="google-site-verification" content="T6hjvvGUYLg_ebyLP7ZZwzB-U9WPmD51I84tQemx4Q4"/>
+    <title> {{ object.title }} </title>
+    <meta name="description" content="{{object.g_content }}"/>
+    <meta name="author" content="{{ object.event_author }}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="futurspot,technews,innovation,Artificial intelligence,robotics,science,vr,computing,latestinnovation,technologynews,electronics">
+
+	<meta name="og:title" content="{{ object.title }} ">
+	<meta name="og:description" content="{{object.g_content }}">
+	<meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.futurspot.com/{object.slug}}" />
+    <html prefix="og: http://ogp.me/ns#">
+    <meta name="og:image:secure_url" content="https://www.futurspot.com/media/{{object.g_thumb}}">
+    <meta name="og:image" content="https://www.futurspot.com/media/{{object.g_thumb}}">
+
+
+
+
+
+{% endblock head %}
+
+{% block content %}
+
+{% if object.media_status == "video" %}
+    <div class="container-fluid tm-container-content tm-mt-60" style ="padding-left:50px;">
+        <div class="row mb-4">
+            <h1 class="col-12 tm-text-primary" style ="font-weight: 900;font-family: 'Montserrat', sans-serif ; padding-top:50px;">{% block title %} {{ object.title}} {% endblock title %}</h1>
+
+        </div>
+        <div class="row tm-mb-90">
+            <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
+                <video autoplay muted loop controls id="tm-video">
+                    <source src="{{object.g_video.url}}" type="video/mp4" style="width : 50%;padding-right:20px;
+
+                    max-height: 400px;min-height: 200px;">
+                </video>
+
+            </div>
+{% endif %}
+
+
+{% if object.media_status == "link" %}
+    <div class="container-fluid tm-container-content tm-mt-60 " style ="padding-left:50px;">
+        <div class="row mb-4">
+            <h2 class="col-12 tm-text-primary" style ="font-weight: 900;font-family: 'Montserrat', sans-serif ;padding-top:50px ;color:black;">{{ object.title}}</h2>
+        </div>
+        <div  >
+            <iframe style="width : 70%;padding-right:20px;
+
+            max-height: 600px;min-height: 500px;" src="https://www.youtube.com/embed/{{ object.youtube_link}}">
+            </iframe>
+
+            </div>
+
+{% endif %}
+
+
+
+
+
+{% if object.media_status == "image" %}
+    <div class="container-fluid tm-container-content tm-mt-60 " style ="padding-left:50px;">
+        <div class="row mb-4">
+            <h2 class="col-12 tm-text-primary" style ="font-weight: 900;font-family: 'Montserrat', sans-serif ;padding-top:50px ;color:black;">{{ object.title}}</h2>
+        </div>
+        <div >
+             <img src="{{object.g_image.url}}" alt="{{ object.title}}" style="width : 0%;padding-right:10px;
+
+             max-height: 400px;min-height: 300px;">
+            </div>
+
+{% endif %}
+
+
+                    <div style ="padding-top:20px;" >
+                        <div style="padding-left:0px; color : red;"><p>{{ object.g_content }}</p></style></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div> <!-- row -->
+    </div> <!-- container-fluid, tm-container-content -->
+
+<script src="js/plugins.js"></script>
+    <script>
+        $(window).on("load", function() {
+            $('body').addClass('loaded');
+        });
+    </script>
+
+{% endblock content %}

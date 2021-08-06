@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load hitcount_tags %}
+
+
+{% block head %}
+
+    <meta name="google-site-verification" content="T6hjvvGUYLg_ebyLP7ZZwzB-U9WPmD51I84tQemx4Q4"/>
+<script data-ad-client="ca-pub-7206542058393954" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-190791322-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+    gtag('config', 'UA-190791322-1');
+    </script>
+
+
+    <title> {{ object.title }} </title>
+    <meta name="description" content="Noice free, curated news on innovations around the globe!.">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="futurspot,technews,innovation,Artificial intelligence,robotics,science,vr,computing,latestinnovation,technologynews">
+    <meta name="author" content="{{ post.author }}"/>
+    <meta name="og:image:secure_url" content="https://www.futurspot.com{{post.dimage.url}}">
+    <meta name="og:image" content="https://www.futurspot.com{{post.dimage.url}}">
+    <meta name="og:title" content="{{ object.title }}">
+    <meta name="og:description" content="{{object.meta_dec }}">
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.futurspot.com/{{post.slug}}" />
+
+    <html prefix="og: http://ogp.me/ns#"></html>
+    <meta property="og:type" content="article" />
+{% endblock head %}
+{% block content %}
+
+<section id="at">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 card mb-0  mt-0 left top"  >
+      <div class="card-body">
+       
+         
+        <h1 style=" font-weight: 900;font-family: 'Montserrat', sans-serif ;font-size: 2.2em ; padding-top: 0px ;"><b>{% block title %} {{ object.title }} {% endblock title %}</b></h1>
+        
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }} Views: {% get_hit_count for object %}</p>
+        
+        
+  
+<div id="share-buttons">
+  
+    <p style="font-size:20px;">Share :</p>
+    <!-- Email -->
+    <a style="margin:10px;font-size:20px;font-weight: 1500;color: rgb(255, 123, 0);" href="mailto:?Subject=Simple Share Buttons&amp;Body=https://www.futurspot.com{% url 'post_detail' post.slug  %}">
+      <i class="fa fa-google" aria-hidden="true"></i>
+  
+    </a>
+ 
+    <!-- Facebook -->
+    <a style="margin:10px;font-size:20px;font-weight: 1500;color: rgb(255, 123, 0);"  href="http://www.facebook.com/sharer.php?u=https://vwww.futurspot.com{% url 'post_detail' post.slug  %}" ><i class="fa fa-facebook" aria-hidden="true"></i>
+  
+    </a>
+    
+ 
+    
+    <!-- LinkedIn -->
+    <a style="margin:10px;font-size:22px; font-weight: 1500; color :rgb(255, 123, 0);" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.futurspot.com{% url 'post_detail' post.slug  %}" target="_blank">
+      <i class="fa fa-linkedin" aria-hidden="true"></i>
+    </a>
+    
+  
+  
+    <!-- Tumblr-->
+    <a style="margin:10px;font-size:20px; font-weight: 1500; color : rgb(255, 123, 0);"  href="http://www.tumblr.com/share/link?url=https://www.futurspot.com{% url 'post_detail' post.slug  %}" target="_blank">
+      <i class="fa fa-tumblr" aria-hidden="true"></i>
+    </a>
+     
+    <!-- Twitter -->
+    <a style="margin:10px;font-size:20px; font-weight: 1500; color: rgb(255, 123, 0);"  href="https://twitter.com/share?url=https://www.futurspot.com{% url 'post_detail' post.slug  %}" target="_blank">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+    </a>
+
+   
+
+</div>
+
+       
+        
+         <img class ="post_image" src="{{post.dimage.url}}" alt="{{object.title}}"  width= 100%  height=auto  >
+        <div> 
+         <div class="card-text" style="font-weight: 400;font-size: 19px;color: #424242; font-family:PT serif ;line-height: 1.55em;box-sizing: border-box;">{{ object.content | safe }}
+        </div>
+        <div style="background-color:rgb(240, 238, 238) ;margin-top:40px;display: flex; "> 
+          <h2 style='color: rgb(190, 190, 190); font-size:14px ;margin-left:20px ;font-weight:400;margin-top: 20px;margin-bottom: 20px;'>Tags: </h2>
+          <h2 style=' color: rgb(190, 190, 190);font-size:15px ;font-weight:400;margin-left:20px ;font-weight:400;margin-top: 20px;margin-bottom: 20px;' >{% for tag in object.tags.all  %} 
+            {{ tag.name }}
+            {% if not forloop.last %}
+
+            {% endif %}
+        {% endfor %}             
+                           </h2>
+                           
+        </div>
+        
+         
+        <h2 style='padding-top: 50px;padding-bottom:20px; font-weight:600;' >Related posts</h2>
+       
+        <div id="relp">
+         
+          {% for post in related_posts %}
+          
+          
+          <ul>
+            <div >
+
+              <img  src="{{post.dimage.url}}" alt="{{post.title}}" class="illu" />
+              <a href="{% url 'post_detail' post.slug  %}" ><p class="link_relp">{{post.title}}</p></a>
+
+
+            </div>
+          </ul>
+           {% endfor %}
+         </div>
+      
+          
+          </div>  
+       
+        </div>
+    </div>
+  
+
+  </div>
+</div>
+</section>
+
+
+{% endblock content %}

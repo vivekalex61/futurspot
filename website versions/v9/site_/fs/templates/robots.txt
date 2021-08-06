@@ -1,0 +1,5 @@
+
+User-agent: *
+Disallow: /futurspot@gmail.com
+Disallow: /admin
+Sitemap:  https://www.futurspot.com/sitemap.xml

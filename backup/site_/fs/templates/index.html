@@ -1,0 +1,81 @@
+
+{% extends "base.html" %} 
+
+
+{% block content %}
+<html lang="en">
+
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+     <!-- <div class="intro-img">
+        <img src="/static/img/intro_img_e.jpg" alt="" class="img-fluid">
+      </div>-->
+
+      <div class="intro-info">
+        <h2>A platform for<br><span>Noice free, curated</span><br>News on innovations around the globe!</h2>
+      <!--  <div>
+          <a href="" class="btn-get-started scrollto">Get started</a>
+          <a href="#services" class="btn-services scrollto">Our Services</a>
+        </div>-->
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+<!--==========================
+    Latest News
+  ============================-->
+
+<section class="recentNews">
+	<div class="container">
+    <h2 class="news-title">Recent Updates</h2>
+    <div class="row">
+{% for post in  post_list %}  
+
+<div class="ct-blog col-sm-0 col-md-4" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+
+        
+                               
+				<div class="inner">
+				        
+					<div class="fauxcrop">
+            
+				    
+          <div class="rectangle"><p style ="color: aliceblue  ; text-align: center; font-size: 14px;" > {{ post.alt_text }}</p></div> 
+                              
+				<a href="{% url 'post_detail' post.slug  %}"><img alt="asdkjasd asjdh" src="{{post.dimage.url}}"></a>
+					</div>
+					<div class="ct-blog-content">
+						<div class="ct-blog-date">
+						<strong>{{ post.created_on.day }}</strong>
+						<span>{{ post.created_on.month }}</span>
+
+				
+						<strong>{{ post.created_on.year }}</strong>
+							
+						</div>
+						
+						<h3 class="ct-blog-header" >
+							{{ post.title }}</h3>
+           
+					       
+					       
+					       </div>
+					      
+					
+				</div>
+
+			
+      </div>
+   
+{% endfor %}     
+
+</div>    
+</div> 
+</section>
+
+{%endblock%}

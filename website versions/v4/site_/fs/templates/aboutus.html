@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+ {% block content %}
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+
+
+.about-section {
+  padding-top: 140px;
+  padding-bottom: 160px;
+  text-align: center;
+  background-color: #f55c00;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+form { max-width:420px; margin:50px auto; }
+
+.feedback-input {
+  color:white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid white;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.feedback-input:focus { border:2px solid #CC4949; }
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize:vertical;
+}
+
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background:blue;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+[type="submit"]:hover { background:#CC4949; }
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1 style="font-weight:400 ;">About Us</h1> <p style="color:white;">Day by day the world is progressing beyond our thoughts, from wheel to self-driving cars, firecrackers to vertical landing reusable rockets, 0$ to trillion-dollar companies, manual switching system to artificial intelligence technology, and so on. Even though We can’t slow down the progress of technology, we can learn it. With Futurspot, anyone can become a techno-savvy without any herculean efforts. Futurspot is simple, sharp, short, clean as well as noiseless. Our aim to make everyone Digital-savvy despite their limitations. Futurspot will deliver latest innovations on Artificial intelligence, robotics,electronics, virtual reality, internet of things, startups, and entrepreneurship stories for all technology and entrepreneurship enthusiasts.</p>
+
+
+
+  
+</div>
+</body>
+
+​
+
+
+{% endblock content %}

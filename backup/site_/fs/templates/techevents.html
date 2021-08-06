@@ -1,0 +1,56 @@
+
+{% extends "base.html" %} 
+
+
+{% block content %}
+
+
+<section class="recentNews">
+	<div class="container">
+    <h2 style="padding-top :100px; font-family: heroic ; text-align : center ;font-size: 44px ;">Tech Events</style></h2>
+    <div class="row">
+{% for post in event_list %}    
+
+<div class="ct-blog col-sm-0 col-md-4" onclick="javascript:window.location.href='{% url 'event_detail' post.slug  %}'">
+
+                               
+				<div class="inner">
+				        
+					<div class="fauxcrop">
+            
+				    
+          <div class="rectangle"><p style = "color: aliceblue  ; text-align: center; font-size: 14px;" > {{ post.alt_text }}</p></div> 
+            
+				<a href="{% url 'event_detail' post.slug  %}"><img alt="asdkjasd asjdh" src="{{post.e_thumb.url}}"></a>
+					</div>
+					<div class="ct-blog-content">
+						<div class="ct-blog-date">
+						<strong>{{ post.created_on.day }}</strong>
+						<span>{{ post.created_on.month }}</span>
+
+				
+						<strong>{{ post.created_on.year }}</strong>
+							
+						</div>
+						
+						<h3 class="ct-blog-header" >
+							{{ post.title }}</h3>
+           
+					       
+					       
+					       </div>
+					      
+					
+				</div>
+
+				
+      </div>
+
+{% endfor %}     
+
+
+</div>    
+</div> 
+</section>
+
+{%endblock%}

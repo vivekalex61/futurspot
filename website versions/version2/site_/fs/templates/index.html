@@ -1,0 +1,336 @@
+
+{% extends "base.html" %} 
+
+{% load hitcount_tags %}
+{% block content %}
+
+<!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+     <!-- <div class="intro-img">
+        <img src="/static/img/intro_img_e.jpg" alt="" class="img-fluid">
+      </div>-->
+
+      <div class="intro-info">
+        <h2>A platform for<br><span>Noice free, curated</span><br>News on innovations around the globe!</h2>
+   
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+<!--==========================
+    Latest News
+  ============================-->
+
+ 
+
+
+
+<section class="recentNews">
+	<div class="container">
+    <h2 style="text-align:left;
+    padding-top:27px;
+    padding-bottom:5px ;
+    font-style: normal;
+    font-family: Inter,sans-serif ; 
+   color: #2c2c2c;      
+    font-size: 1.5em ;
+    letter-spacing: -.3px;
+    font-weight: 700 ;border-bottom: 3px solid#2c2c2c; text-transform: uppercase;"  >Recent Stories</h2>
+ <div class="row"> 
+  <div class="row"> 
+      {% for post in total_post%}  
+      {% if post.alt_text == "Innovations" %}
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+      
+                                     
+        <div class="inner">
+       
+                     
+         <div class="fauxcrop">
+             <a href="{% url 'post_detail' post.slug  %}"><img alt="asdkjasd asjdh" src="{{post.dimage.url}}"></a>
+         </div>
+         <div style="display: flex; padding-top: 5px ;">
+         <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+         <div class="rectangle-d" ><p style="font-size: 1vw;font-weight: 600;">{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p>
+         </div>
+       </div>
+       <div><h3 class="ct-blog-header" > <p>Views: {% get_hit_count for post%}</p></h3></div>
+         
+       </div>
+      </div>
+      {% endif %}
+      {% if post.alt_text == "Gallery" %}
+
+      <div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'gallery_detail' post.slug  %}'">
+
+                               
+        <div class="inner">
+       
+                           
+           <div class="fauxcrop">
+           <a href='{% url 'gallery_detail' post.slug  %}'><img alt="asdkjasd asjdh" src="{{post.g_thumb.url}}"></a>
+           </div>
+           <div style="display: flex; padding-top: 5px ;">
+           <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+           <div class="rectangle-d" ><p style="font-size: 14px;font-weight: 600;">{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p>
+           </div>
+       </div>
+        <div><h3 class="ct-blog-header" >{{ post.title }}</h3></div>
+           
+       </div>
+      </div>
+      {% endif %}
+      {% if post.alt_text == "Events" %}
+      
+<div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'event_detail' post.slug  %}'">
+
+                               
+	<div class="inner">
+   
+					   
+	   <div class="fauxcrop">
+	   <a href="{% url 'event_detail' post.slug  %}"><img alt="asdkjasd asjdh" src="{{post.e_thumb.url}}"></a>
+	   </div>
+	   <div style="display: flex; padding-top: 5px ;">
+	   <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > Events</p></div>  
+	   <div class="rectangle-d" ><p style="font-size: 14px;font-weight: 600;">{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p>
+	   </div>
+   </div>
+	<div><h3 class="ct-blog-header" >{{ post.title }}</h3></div>
+	   
+   </div>
+</div>
+      {% endif %}
+
+
+      {% endfor %}   
+
+<!--    </div>        -->
+   
+</div>
+
+<div id="load" style=""><a href="#">Load More</a></div>
+
+
+  <!--   <div  class="row">      -->
+  
+
+    <div style=" float: left;position: relative;
+    width: 300px;position: static; ;padding: 80px 0px 90px 0px;margin-right: 0px ; padding-right: 0;">
+    <div id ='popp'>
+      <h2 style="text-align:left;
+      width: 300px;
+      padding-top:27px;
+      padding-bottom:5px ;
+      font-style: normal;
+      font-family: Inter,sans-serif ; 
+     color: #2c2c2c;      
+      font-size: 1.4em ;
+      letter-spacing: -.3px;
+      font-weight: 700 ;border-bottom: 3px solid #2c2c2c; text-transform: uppercase;"  >Popular stories</h2>
+      {% for post in popular_posts%}
+      
+      <ul style="margin: 0px;
+      padding: 0px;">
+        <div style="
+          padding-top: 0px;
+          border-top: none;">
+
+          <img style ="padding-bottom: 12px;"src="{{post.dimage.url}}" width="300" height="150" alt="" />
+          <p><a href="{% url 'post_detail' post.slug  %}" style="font-family:sans-serif,inter; font-size: 18px; font-weight: 900 ; line-height: 1px ; color: black;">{{post.title}}</a></p>
+         
+          
+        </div>
+      </ul>
+   
+    
+       {% endfor %}
+       
+   </div> 
+
+      <div id="revi">
+        <h2 style="text-align:left;
+        padding-top:27px;
+        width: 300px;
+        padding-bottom:5px ;
+        font-style: normal;
+        font-family: Inter,sans-serif ; 
+       color: #2c2c2c;      
+        font-size: 1.4em ;
+        letter-spacing: -.3px;
+        font-weight: 700 ;border-bottom: 3px solid #2c2c2c; text-transform: uppercase;" >Reviews</h2>
+          {% for post in popular_posts%}
+          
+          <ul style="margin: 0px;
+          padding: 0px;">
+            <div style="
+              padding-top: 0px;
+              border-top: none;">
+    
+              <img style ="padding-bottom: 12px;"src="{{post.dimage.url}}" width="300" height="150" alt="" />
+              <p><a href="{% url 'post_detail' post.slug  %}" style="font-family:sans-serif,inter; font-size: 18px; font-weight: 900 ; line-height: 1px ; color: black;">{{post.title}}</a></p>
+             
+              
+            </div>
+          </ul>
+       
+        
+           {% endfor %}
+           
+          </div>
+
+          <div id="arti">
+            <h2 style="text-align:left;
+     padding-top:27px;
+     width: 300px;
+     padding-bottom:5px ;
+     font-style: normal;
+     font-family: Inter,sans-serif ; 
+    color: #2c2c2c;      
+     font-size: 1.4em ;
+     letter-spacing: -.3px;
+     font-weight: 700 ;border-bottom: 3px solid #2c2c2c; text-transform: uppercase;"  >Articles</h2>
+              {% for post in popular_posts%}
+              
+              <ul style="margin: 0px;
+              padding: 0px;">
+                <div style="
+                  padding-top: 0px;
+                  border-top: none;">
+        
+                  <img style ="padding-bottom: 12px;"src="{{post.dimage.url}}" width="300" height="150" alt="" />
+                  <p ><a href="{% url 'post_detail' post.slug  %}"style="font-family:sans-serif,inter; font-size: 18px; font-weight: 900 ; line-height: 1px ; color: black;">{{post.title}}</a></p>
+                 
+                  
+                </div>
+              </ul>
+           
+            
+               {% endfor %}
+               
+              </div>
+
+
+</div>
+
+ 
+  <div id ="div_tre"style="  overflow: hidden; float: center;  position: relative ;left:40px;padding: 80px 0px 90px 0px;"	>
+    <div >
+      <h2 id ="h_tre">trending now</h2>
+      {% for post in popular_posts_1%}
+      
+      <div style=" padding-left: 15px;">
+      <a href="{% url 'post_detail' post.slug  %}"><div style="position: relative; "> <p><img id ="im_tre" src="{{post.dimage.url}}"  alt="" /></p>
+      <div id="div1_tre" ><div style="position:absolute;left: 10px;padding-right: 1%; padding-left: 1%; top: 5%; text-align: center;background-color:white ; color:black ;font-weight: 400;font-size: 12px;" >FEATURED</div>
+      <div id ="ti_tre" >{{ post.title }}</div>
+    </div>
+      
+    </div></a>
+    
+  
+      {% endfor %}
+    </div>
+  
+    </div>
+
+    <div   style=" padding-left: 15px;">
+      <h2 id = "h_inn" >innovation news</h2>
+  
+      {% for post in Post%}
+  
+      <div id="di_inn" >
+     <img id="img_inn"  src="{{post.dimage.url}}"  alt="" > 
+      <p id="p_inn" >{{ post.title }}</p>
+      <p><a href="{% url 'post_detail' post.slug  %}"  style=" font-family:sans-serif,inter;  font-size: 15px ; font-weight: 900; color: rgb(235, 92, 92);">Read More</a></p>
+      
+    </div>
+      {% endfor %}
+  
+        </div>
+  
+    </div>
+ 
+    <script>
+      //Infinite Scroll
+$(window).on("scroll", function() {
+ //page height
+ var scrollHeight = $(document).height();
+ //scroll position
+ var scrollPos = $(window).height() + $(window).scrollTop();
+ // fire if the scroll position is 300 pixels above the bottom of the page
+ if(((scrollHeight - 300) >= scrollPos) / scrollHeight == 0){
+   $('.load-more-days-button').click();
+  }
+});
+    </script>
+ 
+ <div style="float: right; width : 300px;position: relative; left: 80px;padding: 80px 0px 90px 0px;">
+  <div>
+    <h2 style="text-align:left;
+    padding-top:27px;
+    padding-bottom:5px ;
+    font-style: normal;
+    font-family: Inter,sans-serif ; 
+   color: #2c2c2c;      
+    font-size: 1.4em ;
+    letter-spacing: -.3px;
+    font-weight: 700 ;border-bottom: 3px solid #2c2c2c; text-transform: uppercase;" >Gallery</h2>
+   {% for post in Gallery_sidebar%}
+   <ul style="margin: 0px;
+   padding: 0px;">
+     <div style="
+       padding-top: 0px;
+       border-top: none;">
+
+       <img style ="padding-bottom: 12px;"src="{{post.g_thumb.url}}" width="300" height="150" alt="" />
+       <p><a href='{% url 'gallery_detail' post.slug  %}' style="font-family:sans-serif,inter; font-size: 18px; font-weight: 900 ; line-height: 1px ; color: black;">{{post.title}}</a></p>
+       
+     
+     </div>
+    </ul>
+    {% endfor %}
+
+  
+ </div>
+   <div>
+     <h2 style="text-align:left;
+     padding-top:27px;
+     padding-bottom:5px ;
+     font-style: normal;
+     font-family: Inter,sans-serif ; 
+    color: #2c2c2c;      
+     font-size: 1.4em ;
+     letter-spacing: -.3px;
+     font-weight: 700 ;border-bottom: 3px solid #2c2c2c; text-transform: uppercase;"  >tech events</h2>
+    
+     
+     {% for post in  Event_sidebar%}
+     <ul style="margin: 0px;
+     padding: 0px;">
+       <div style=" padding-top: 0px;
+         border-top: none;">
+
+         <img style ="padding-bottom: 12px;" src="{{post.e_thumb.url}}" width="300" height="150" alt="" />
+         <p><a href="{% url 'event_detail' post.slug  %}" style="font-family:sans-serif,inter; font-size: 18px; font-weight: 900 ; line-height: 1px ; color: black;">{{post.title}}</a></p>
+         
+         
+       </div>
+      </ul>
+      {% endfor %}
+     
+    
+   </div>
+ </div>
+
+
+ </div>
+ 
+  </div> 
+  </section>
+
+
+{%endblock%}

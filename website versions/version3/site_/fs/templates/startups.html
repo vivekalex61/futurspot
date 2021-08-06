@@ -1,0 +1,43 @@
+
+{% extends "base.html" %} 
+
+
+{% block content %}
+<html lang="en">
+
+
+<section class="recentNews">
+	<div class="container">
+
+    <h2 style="padding-top :100px; font-family: heroic ; text-align : center ;font-size: 44px ;">Startups</style></h2>
+    <div class="row">
+{% for post in post_list %}    
+{% if post.innovation_catgry == 5 %}
+<div class="ct-blog col-sm-0 col-md-3 nmooo" onclick="javascript:window.location.href='{% url 'post_detail' post.slug  %}'">
+
+                               
+	<div class="inner">
+   
+					   
+	   <div class="fauxcrop">
+	   <a href="{% url 'post_detail' post.slug  %}"><img alt="asdkjasd asjdh" src="{{post.dimage.url}}"></a>
+	   </div>
+	   <div style="display: flex; padding-top: 5px ;">
+	   <div class="rectangle"><p style ="color: aliceblue  ;font-weight: 600; text-align: center; font-size: 14px; " > {{ post.alt_text }}</p></div>  
+	   <div class="rectangle-d" ><p style="font-size: 14px;font-weight: 600;">{{ post.created_on.day }}-{{ post.created_on.month }}-{{ post.created_on.year }}</p>
+	   </div>
+   </div>
+	<div><h3 class="ct-blog-header" >{{ post.title }}</h3></div>
+	   
+   </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}     
+
+<div id="load" style=""><a href="#">Load More</a></div>
+</div>    
+</div> 
+</section>
+
+{%endblock%}
